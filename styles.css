@@ -1,0 +1,63 @@
+.board {
+    display: inline-block;
+    border: 1px solid darkgrey;
+    background-color: #FEFFDB;
+}
+
+.board .row .tile {
+    float: left;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+}
+
+.board .row .tile:after {
+    content: "";
+    display: block;
+    border-radius: 50%;
+    width: 80%;
+    height: 80%;
+    margin: 10%;
+}
+
+.board .row .tile.empty:after {
+    border: 1px solid #777777;
+    background: white;
+}
+
+.board .row .tile.filled:after {
+    cursor: pointer;
+    border: 1px solid #777777;
+    background: #ffffff; /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover,  #ffffff 0%, #f3f3f3 50%, #ededed 51%, #ffffff 100%); /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#ffffff), color-stop(50%,#f3f3f3), color-stop(51%,#ededed), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover,  #ffffff 0%,#f3f3f3 50%,#ededed 51%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover,  #ffffff 0%,#f3f3f3 50%,#ededed 51%,#ffffff 100%); /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover,  #ffffff 0%,#f3f3f3 50%,#ededed 51%,#ffffff 100%); /* IE10+ */
+    background: radial-gradient(ellipse at center,  #ffffff 0%,#f3f3f3 50%,#ededed 51%,#ffffff 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+.board .row .tile.filled:hover:after {
+    border-color: #3366ff;
+}
+
+/******* Utilities *******/
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.clearfix {
+    *zoom: 1;
+}
