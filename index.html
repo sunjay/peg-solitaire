@@ -10,9 +10,9 @@
     <script id="board-template" type="text/x-handlebars-template">
         <div class="board">
         {{#each tiles}}
-            <div class="row clearfix">
+        <div class="row row-{{@index}} clearfix">
             {{#each this}}
-                <div class="tile {{tile_class_name this}}"></div>
+                <div class="tile {{tile_class_name this}}" data-row="{{@../index}}" data-col="{{@index}}"></div>
             {{/each}}
             </div>
         {{/each}}

@@ -27,9 +27,47 @@
         this.tiles = initial_board;
     }
 
+    Board.prototype.height = function() {
+        return this.tiles.length;
+    };
+
+    Board.prototype.width = function() {
+        return this.tiles[0].length;
+    };
+
     Board.prototype.getValidMoves = function() {
         
-    }
+    };
+
+    Board.prototype.isMovableTile = function(row, col) {
+        var tile = this.tiles[row][col];
+        if (tile !== TILES.FILLED) {
+            return false;
+        }
+
+        // Offsets to check in each direction
+        var checks = [-2, 2];
+
+        for (var i = 0; i < checks.length; i++) {
+            var offset = checks[i];
+
+            // vertical offset
+            var i_row = row + offset;
+            if (i_row >= 0 && i_row < this.height()) {
+                if (this.tiles[i_row][col] === TILES.BLANK) {
+                    return true;
+                }
+            }
+
+            // horizontal offset
+            var i_col = col + offset;
+            if (i_col >= 0 && i_col < this.width()) {
+                if (this.tiles[row][i_col] === TILES.BLANK) {
+                    return true;
+                }
+            }
+        }
+    };
 
     window.Board = Board;
 }());
