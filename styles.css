@@ -52,6 +52,19 @@
     border-color: #AAAAAA;
 }
 
+.board .board-row .board-tile.valid-move:after {
+    cursor: pointer;
+    background: #ffffff; /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover,  #ffffff 0%, #ffffff 59%, #e2e2e2 61%, #d3d3d3 100%); /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#ffffff), color-stop(59%,#ffffff), color-stop(61%,#e2e2e2), color-stop(100%,#d3d3d3)); /* Chrome,Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover,  #ffffff 0%,#ffffff 59%,#e2e2e2 61%,#d3d3d3 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover,  #ffffff 0%,#ffffff 59%,#e2e2e2 61%,#d3d3d3 100%); /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover,  #ffffff 0%,#ffffff 59%,#e2e2e2 61%,#d3d3d3 100%); /* IE10+ */
+    background: radial-gradient(ellipse at center,  #ffffff 0%,#ffffff 59%,#e2e2e2 61%,#d3d3d3 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#d3d3d3',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+
 /******* Utilities *******/
 
 .clearfix:before,

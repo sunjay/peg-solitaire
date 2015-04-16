@@ -8,16 +8,32 @@
     }
 
     render_board();
-
+    
+    var selected_tile = null;
     $(document).on("click", ".board-tile.filled", function() {
         var row = $(this).data('row');
         var col = $(this).data('col');
         
-        console.log(row + " " + col);
-        console.log(board.isMovableTile(row, col));
-
-        $('.board .board-tile').removeClass('selected');
+        $('.board .board-tile').removeClass('selected valid-move');
         $(this).addClass('selected');
+
+        board.getMovesAroundTile(row, col).forEach(function(move) {
+            var move_row = move[0];
+            var move_col = move[1];
+
+            $('.board .board-tile[data-row=' + move_row + '][data-col=' + move_col + ']').addClass('valid-move');
+        });
+
+        selected_tile = [row, col];
+    });
+
+    
+    $(document).on("click", ".board-tile.valid-move", function() {
+        var row = $(this).data('row');
+        var col = $(this).data('col');
+
+        board.moveTileTo(selected_tile[0], selected_tile[1], row, col);
+        render_board();
     });
 }(jQuery));
 
