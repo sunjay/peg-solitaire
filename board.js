@@ -54,7 +54,7 @@
             // vertical offset
             var i_row = row + offset;
             if (i_row >= 0 && i_row < this.height()) {
-                if (this.tiles[i_row][col] === TILES.BLANK) {
+                if (this.tiles[i_row][col] === TILES.EMPTY) {
                     return true;
                 }
             }
@@ -62,11 +62,13 @@
             // horizontal offset
             var i_col = col + offset;
             if (i_col >= 0 && i_col < this.width()) {
-                if (this.tiles[row][i_col] === TILES.BLANK) {
+                if (this.tiles[row][i_col] === TILES.EMPTY) {
                     return true;
                 }
             }
         }
+
+        return false;
     };
 
     window.Board = Board;
