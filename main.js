@@ -10,7 +10,7 @@
     render_board();
     
     var selected_tile = null;
-    $(document).on("click", ".board-tile.filled", function() {
+    $(document).on("click", ".board-tile.filled:not(.selected)", function() {
         var row = $(this).data('row');
         var col = $(this).data('col');
         
@@ -27,7 +27,6 @@
         selected_tile = [row, col];
     });
 
-    
     $(document).on("click", ".board-tile.valid-move", function() {
         var row = $(this).data('row');
         var col = $(this).data('col');

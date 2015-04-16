@@ -87,17 +87,20 @@
             throw new Error("Tiles must be orthogonal");
         }
 
-        // Note that this code does not explicitly enforce the "only one tile" between rule of peg solitaire. That responsibility is left up to the view layer
+        // Note that this code does not explicitly enforce the "only one tile" between rule of peg solitaire. That responsibility is left up to the view layer. The view layer should respect the getMovesAroundTile() function.
+
+        // Move the peg out of where it is now
+        this.tiles[row][col] = TILES.EMPTY;
         
         // Only one of these loops should actually run an interation
-        for (var i_row = Math.min(row, dest_row), d_row = Math.max(row, dest_row); i_row < d_row; i_row++) {
+        for (var i_row = Math.min(row, dest_row) + 1, d_row = Math.max(row, dest_row); i_row < d_row; i_row++) {
             // This guard ensures that BLANK tiles are not accidentally changed (though this should never happen)
             if (this.tiles[i_row][col] === TILES.FILLED) {
                 this.tiles[i_row][col] = TILES.EMPTY;
             }
         }
 
-        for (var i_col = Math.min(col, dest_col), d_col = Math.max(col, dest_col); i_col < d_col; i_col++) {
+        for (var i_col = Math.min(col, dest_col) + 1, d_col = Math.max(col, dest_col); i_col < d_col; i_col++) {
             // This guard ensures that BLANK tiles are not accidentally changed (though this should never happen)
             if (this.tiles[row][i_col] === TILES.FILLED) {
                 this.tiles[row][i_col] = TILES.EMPTY;
@@ -106,7 +109,7 @@
 
         // Fill in the destination tile
         this.tiles[dest_row][dest_col] = TILES.FILLED;
-    }
+    };
 
     window.Board = Board;
 }());
