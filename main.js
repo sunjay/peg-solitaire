@@ -9,11 +9,15 @@
 
     render_board();
 
-    $(document).on("click", ".tile.filled", function() {
+    $(document).on("click", ".board-tile.filled", function() {
         var row = $(this).data('row');
         var col = $(this).data('col');
+        
+        console.log(row + " " + col);
+        console.log(board.isMovableTile(row, col));
 
-        $('.board .tile').removeClass('selected');
+        $('.board .board-tile').removeClass('selected');
         $(this).addClass('selected');
     });
 }(jQuery));
+

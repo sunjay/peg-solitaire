@@ -8,14 +8,14 @@
     background-color: #FEFFDB;
 }
 
-.board .row .tile {
+.board .board-row .board-tile {
     float: left;
     display: inline-block;
     width: 50px;
     height: 50px;
 }
 
-.board .row .tile:after {
+.board .board-row .board-tile:after {
     content: "";
     display: block;
     border-radius: 50%;
@@ -24,12 +24,12 @@
     margin: 10%;
 }
 
-.board .row .tile.empty:after {
+.board .board-row .board-tile.empty:after {
     border: 1px solid #777777;
     background: white;
 }
 
-.board .row .tile.filled:after {
+.board .board-row .board-tile.filled:after {
     cursor: pointer;
     border: 1px solid #777777;
     background: #6db3f2; /* Old browsers */
@@ -42,13 +42,13 @@
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6db3f2', endColorstr='#1e69de',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
-.board .row .tile.filled.selected:hover:after,
-.board .row .tile.filled.selected:after {
+.board .board-row .board-tile.filled.selected:hover:after,
+.board .board-row .board-tile.filled.selected:after {
     border-color: #AAAAAA;
     background: #6db3f2;
 }
 
-.board .row .tile.filled:hover:after {
+.board .board-row .board-tile.filled:hover:after {
     border-color: #AAAAAA;
 }
 
