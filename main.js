@@ -10,11 +10,20 @@
     render_board();
     
     var selected_tile = null;
-    $(document).on("click", ".board-tile.filled:not(.selected)", function() {
+    $(document).on("click", ".board-tile.filled", function() {
         var row = $(this).data('row');
         var col = $(this).data('col');
+
+        var already_selected = $(this).hasClass('selected');
         
         $('.board .board-tile').removeClass('selected valid-move');
+
+        if (already_selected) {
+            // Just stop here, leave everything deselected
+            selected_tile = null;
+            return;
+        }
+
         $(this).addClass('selected');
 
         board.getMovesAroundTile(row, col).forEach(function(move) {
