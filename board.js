@@ -27,6 +27,14 @@
         this.tiles = initial_board;
     }
 
+    Board.prototype.copy = function() {
+        var tiles_copy = [];
+        this.tiles.forEach(function(row) {
+            tiles_copy.push(row.slice());
+        });
+        return new Board(tiles_copy);
+    }
+
     Board.prototype.height = function() {
         return this.tiles.length;
     };

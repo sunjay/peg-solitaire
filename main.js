@@ -1,6 +1,9 @@
 // Main game entry point
 (function($) {
     var board = new Board(BOARDS.english);
+    var undos = 10;
+    var undo_history = [];
+
     var render_board_template = Handlebars.compile($("#board-template").html());
 
     function render_board() {
@@ -39,9 +42,28 @@
     $(document).on("click", ".board-tile.valid-move", function() {
         var row = $(this).data('row');
         var col = $(this).data('col');
-
+        
+        undo_history.push(board.copy());
         board.moveTileTo(selected_tile[0], selected_tile[1], row, col);
         render_board();
     });
+
+    $(document).on("click", ".undo-move", function() {
+        if (undos <= 0 || undo_history.length === 0) {
+            return;
+        }
+
+        board = undo_history.pop();
+        undos--;
+
+        if (undos === 0) {
+            $(".undos-left").addClass("text-danger");
+        }
+
+        render_board();
+
+        $(".undos-left").text(undos);
+    });
+    $(".undos-left").text(undos);
 }(jQuery));
 
